@@ -13,6 +13,7 @@ import BookingOrder from "./components/Orders/BuyerBookingOrder";
 import SellerOrders from "./components/Orders/SellerOrders";
 import Payment from "./components/Orders/Payment";
 import DeliverNow from "./components/Orders/DeliverNow";
+import CommentsAndRatings from "./components/Orders/CommentsAndRatings";
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
             <Route exact path="/orderBook/:sellerid/:gigid" element={<BookingOrder />} />
             <Route exact path="/sellerOrders/:sellerId" element={<SellerOrders />} />
             <Route exact path="/payment" element={<Payment />} />
-            <Route exact path="/projectDeliver/:orderid" element={< DeliverNow/>} />
+            <Route exact path="/projectDeliver/:orderid" element={< DeliverNow />} />
+            <Route exact path="/rateProject/:orderid/:gigId/:sellerId/:buyerId" element={< CommentsAndRatings />} />
           </Routes>
         </Router>
       </SocketProvider>

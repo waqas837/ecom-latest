@@ -70,10 +70,17 @@ const SellerProfile = () => {
     try {
       let userdata = localStorage.getItem("cUser");
       let userdataparsed = JSON.parse(userdata);
-      let userid = userdataparsed._id;
-      let { data } = await axios.get(`${apiUrl}/user/getAllProducts/${userid}`);
-      console.log("let logs the data", data);
-      setallProducts(data.data.products);
+      let userId = userdataparsed._id;
+      if (location.state.userVisit) {
+        let { data } = await axios.get(`${apiUrl}/user/getAllProducts/${userid}`);
+        setallProducts(data.data.products);
+        console.log("Products must be ", data);
+      } else {
+        let { data } = await axios.get(`${apiUrl}/user/getAllProducts/${userId}`);
+        setallProducts(data.data.products);
+        console.log("let logs the data", data);
+      }
+
     } catch (error) {
       console.log("Err in function getAllProductsData", error);
     }
