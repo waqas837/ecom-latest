@@ -127,6 +127,7 @@ const SellerProfile = () => {
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
+    setfilePreview(selectedFile.name)
   };
 
   const handleInputChange = (event) => {
@@ -438,15 +439,13 @@ const SellerProfile = () => {
                               className="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
                             >
                               <div>
-                                <span className="mb-2 block text-xl font-semibold text-[#07074D]">
+                                {filePreview ? filePreview : <><span className="mb-2 block text-xl font-semibold text-[#07074D]">
                                   Drop files here
-                                </span>
-                                <span className="mb-2 block text-base font-medium text-[#6B7280]">
-                                  Or
-                                </span>
-                                <span className="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]">
-                                  Browse
-                                </span>
+                                </span><span className="mb-2 block text-base font-medium text-[#6B7280]">
+                                    Or
+                                  </span><span className="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]">
+                                    Browse
+                                  </span></>}
                               </div>
                             </label>
                           </div>
@@ -527,7 +526,7 @@ const SellerProfile = () => {
                           Price ${val.price}
                         </span>
                         {!location.state.userVisit ? (
-                          <button onClick={()=>navigate(`/editgig/${val._id}`)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                          <button onClick={() => navigate(`/editgig/${val._id}`)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:ring">
                             Edit
                           </button>
                         ) : (
