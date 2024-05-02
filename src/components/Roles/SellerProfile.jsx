@@ -505,8 +505,8 @@ const SellerProfile = () => {
               {/* gigs cards*/}
               {allProducts &&
                 allProducts.map((val) => (
-                  <div className="bg-white rounded-lg overflow-hidden shadow-lg ring-opacity-40 max-w-sm cursor-pointer">
-                    <div className="relative">
+                  <div className="bg-white rounded-lg overflow-hidden shadow-lg ring-opacity-40 max-w-sm">
+                    <div className="relative cursor-pointer" onClick={() => navigate(`/details/${val._id}`)}>
                       <img
                         width={500}
                         height={500}
@@ -527,13 +527,14 @@ const SellerProfile = () => {
                           Price ${val.price}
                         </span>
                         {!location.state.userVisit ? (
-                          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                          <button onClick={()=>navigate(`/editgig/${val._id}`)} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                             Edit
                           </button>
                         ) : (
                           ""
                         )}
                       </div>
+                      Order completed ({val.completedOrders})
                     </div>
                   </div>
                 ))}

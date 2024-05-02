@@ -14,6 +14,8 @@ import SellerOrders from "./components/Orders/SellerOrders";
 import Payment from "./components/Orders/Payment";
 import DeliverNow from "./components/Orders/DeliverNow";
 import CommentsAndRatings from "./components/Orders/CommentsAndRatings";
+import GigDetailPage from "./components/Orders/GigDetailsPage"
+import GigEdit from "./components/Orders/GigEdit";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
             <Route exact path="/payment" element={<Payment />} />
             <Route exact path="/projectDeliver/:orderid" element={< DeliverNow />} />
             <Route exact path="/rateProject/:orderid/:gigId/:sellerId/:buyerId" element={< CommentsAndRatings />} />
+            <Route exact path="/details/:gigId" element={< GigDetailPage />} />
+            <Route exact path="/editgig/:gigId" element={< GigEdit />} />
           </Routes>
         </Router>
       </SocketProvider>
